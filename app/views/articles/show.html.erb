@@ -1,0 +1,17 @@
+<article>
+  <h3>
+    <%= @article.title %>
+    <small>
+      <%= link_to "Edit", [:edit, @article] %>
+    </small>
+  </h3>
+
+  <p><%= @article.content %></p>
+
+  <p>
+    <small>
+      Posted in <strong><%= @article.category.name %></strong>
+      <em><%= distance_of_time_in_words_to_now(@article.created_at) %> ago</em>
+    </small>
+  </p>
+</article>

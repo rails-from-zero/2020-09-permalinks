@@ -1,0 +1,15 @@
+<p><%= link_to "Submit article", [:new, :article] %></p>
+
+<% @articles.each do |article| %>
+  <article>
+    <h3>
+      <%= link_to article.title, article %>
+    </h3>
+
+    <p>
+      <%= truncate(article.content, length: 165) %>
+    </p>
+
+    <%= render partial: "category", locals: { article: article } %>
+  </article>
+<% end %>
