@@ -11,5 +11,11 @@
 
   <p><%= f.text_area :content, placeholder: "Content" %></p>
   <p><%= f.collection_select :category_id, Category.all, :id, :name %></p>
+  <% if f.object.persisted? %>
+    <p>
+      <%= f.check_box :regenerate_permalink %>
+      <%= f.label :regenerate_permalink %>
+    </p>
+  <% end %>
   <p><%= f.submit "Save" %></p>
 <% end %>
