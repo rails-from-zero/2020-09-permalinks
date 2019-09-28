@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root to: "articles#index"
 
   resources :articles
+
+  resources :categories do
+    resources :articles
+  end
 end

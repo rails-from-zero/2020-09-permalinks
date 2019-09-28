@@ -2,7 +2,7 @@
   <h3>
     <%= @article.title %>
     <small>
-      <%= link_to "Edit", [:edit, @article] %>
+      <%= link_to "Edit", [:edit, @article.category, @article] %>
     </small>
   </h3>
 
