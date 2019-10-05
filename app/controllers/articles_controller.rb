@@ -44,7 +44,11 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find_by!(permalink: params[:id])
+    @article = Article.find_by!(permalink: params[:id], category_id: category)
+  end
+
+  def category
+    Category.find_by(permalink: params[:category_id])
   end
 
   def article_params

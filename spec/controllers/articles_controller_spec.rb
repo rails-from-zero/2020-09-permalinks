@@ -14,6 +14,19 @@ RSpec.describe ArticlesController do
       expect(response.status).to eql(200)
     end
 
+    context "without correct category" do
+      subject(:perform_request) {
+        get :show, params: { id: "my-permalink", category_id: other_category }
+      }
+
+      let(:other_category) { FactoryBot.create(:category) }
+
+      it "raises error" do
+        expect { perform_request }
+          .to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
     context "without correct permalink" do
       subject(:perform_request) {
         get :show, params: { id: "wrong-permalink", category_id: category }
