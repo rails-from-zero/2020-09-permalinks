@@ -10,7 +10,7 @@ module Permalinkable
 
   def generate_permalink(count = 0)
     column_value = attributes.fetch(self.class.permalink_column)
-    new_permalink = column_value.parameterize[0..49]
+    new_permalink = PermalinkNormalizer.new(column_value).normalize
 
     if count > 0
       new_permalink += "-#{count}"

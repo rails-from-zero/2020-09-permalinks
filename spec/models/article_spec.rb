@@ -9,16 +9,6 @@ RSpec.describe Article do
       FactoryBot.build(:article, title: "Hello world!", category: category)
     }
 
-    it { is_expected.to eql("hello-world") }
-
-    context "with a very long title" do
-      let(:article) {
-        FactoryBot.build_stubbed(:article, title: "x" * 200)
-      }
-
-      it { is_expected.to eql("x" * 50) }
-    end
-
     context "with existing article having the same title" do
       before do
         FactoryBot.create(:article, title: "Hello world!", category: category)
